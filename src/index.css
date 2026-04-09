@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Light theme ──────────────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-canvas:        #f4f4f5;
+  --bg-panel:         #ffffff;
+  --bg-surface:       #f0f0f1;
+  --bg-surface-hover: #e8e8ea;
+  --border:           #e4e4e7;
+  --border-strong:    #d1d1d6;
+  --accent:           #000000;
+  --accent-subtle:    rgba(0, 0, 0, 0.05);
+  --accent-border:    rgba(0, 0, 0, 0.15);
+  --text-1:           #111111;
+  --text-2:           #71717a;
+  --text-3:           #c4c4cc;
+  --danger:           #dc2626;
+  --grid-dot:         #d4d4d8;
+  --shadow:           rgba(0, 0, 0, 0.08);
+  --minimap-bg:       rgba(255, 255, 255, 0.92);
+}
+
+/* ── Dark theme (default) ─────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg-canvas:        #0a0a0a;
+  --bg-panel:         #111111;
+  --bg-surface:       #1c1c1c;
+  --bg-surface-hover: #242424;
+  --border:           #222222;
+  --border-strong:    #333333;
+  --accent:           #ffffff;
+  --accent-subtle:    rgba(255, 255, 255, 0.06);
+  --accent-border:    rgba(255, 255, 255, 0.14);
+  --text-1:           #f0f0f0;
+  --text-2:           #888888;
+  --text-3:           #444444;
+  --danger:           #ef4444;
+  --grid-dot:         #1e1e1e;
+  --shadow:           rgba(0, 0, 0, 0.55);
+  --minimap-bg:       rgba(17, 17, 17, 0.94);
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-1);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+/* Edge animation */
+@keyframes dash-flow {
+  to { stroke-dashoffset: -20; }
+}
+
+.edge-animated {
+  animation: dash-flow 0.6s linear infinite;
+}
+
+/* No text select on SVG interactions */
+.canvas-root {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Tooltip */
+.tooltip {
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Input / textarea / select resets */
+input, textarea, select {
+  outline: none;
+}
+
+/* Context menu */
+.context-menu {
+  animation: fadeIn 0.1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97) translateY(-2px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
